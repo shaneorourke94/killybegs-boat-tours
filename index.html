@@ -69,6 +69,16 @@
       height: 180px;
     }
   }
+
+  .bg-color-light {
+    background-color: #e6f9ff;
+}
+
+.bg-color-dark {
+    background-color: #f6f6f6;
+}
+
+
   </style>
 </head>
 
@@ -97,7 +107,7 @@
             <a href="#book" class="btn btn-light btn-lg mt-3">Book&nbsp;Now</a>
         </div>
     </header>
-    <section class="py-5" id="times">
+    <section class="py-5 bg-color-dark" id="times">
         <div class="container">
             <h2 class="mb-4 text-center">Sailing Times &amp; Prices</h2>
             <div class="row">
@@ -120,7 +130,7 @@
             </div>
         </div>
     </section>
-    <section class="py-5 bg-light" id="gallery">
+    <section class="py-5 bg-color-light" id="gallery">
         <div class="container">
             <h2 class="mb-4 text-center">Gallery</h2>
             <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
@@ -146,7 +156,7 @@
             </div>
         </div>
     </section>
-    <section class="py-5" id="info">
+    <section class="py-5 bg-color-dark" id="info">
         <div class="container">
             <h2 class="mb-4 text-center">Information</h2>
             <p>
@@ -215,14 +225,14 @@
     window.addEventListener('scroll', updateNavbar);
     window.addEventListener('DOMContentLoaded', updateNavbar);
 
-     // Collapse navbar on mobile after click
+    // Collapse navbar on mobile after click
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        if (navbarCollapse.classList.contains('show')) {
-          new bootstrap.Collapse(navbarCollapse).hide();
-        }
-      });
+        link.addEventListener('click', () => {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                new bootstrap.Collapse(navbarCollapse).hide();
+            }
+        });
     });
 
     // Formspree async handling
