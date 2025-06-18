@@ -49,6 +49,10 @@
     .navbar-transparent .nav-link:hover {
       text-decoration: underline;
     }
+    .carousel-image {
+        height: 1000px;
+        object-fit: cover;
+    }
   </style>
 </head>
 
@@ -100,19 +104,29 @@
             </div>
         </div>
     </section>
-    <section class="bg-light py-5" id="gallery">
+    <section class="py-5 bg-light" id="gallery">
         <div class="container">
             <h2 class="mb-4 text-center">Gallery</h2>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/400x250?text=Boat+Tour+1" class="img-fluid rounded" alt="Boat Tour 1">
+            <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded shadow">
+                    <div class="carousel-item active">
+                        <img src="seka1.jpg" class="d-block w-100 carousel-image" alt="Boat Tour 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="seka2.jpg" class="d-block w-100 carousel-image" alt="Boat Tour 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="seka3.jpg" class="d-block w-100 carousel-image" alt="Scenic View">
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/400x250?text=Boat+Tour+2" class="img-fluid rounded" alt="Boat Tour 2">
-                </div>
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/400x250?text=Scenic+View" class="img-fluid rounded" alt="Scenic View">
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </section>
@@ -159,9 +173,13 @@
             </form>
         </div>
     </section>
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center py-4">
         <div class="container">
-            © 2025 Killybegs Boat Tours. All rights reserved.
+            <p>© 2025 Killybegs Boat Tours. All rights reserved.</p>
+            <p>
+                Follow us on
+                <a href="https://instagram.com/killybegs_boat_tours_" target="_blank" class="text-white text-decoration-underline">Instagram</a>
+            </p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
