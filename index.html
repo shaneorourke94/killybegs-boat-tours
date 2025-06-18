@@ -49,10 +49,25 @@
     .navbar-transparent .nav-link:hover {
       text-decoration: underline;
     }
+
+     .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Adjust height on smaller screens */
+  @media (max-width: 768px) {
     .carousel-image {
-        height: 1000px;
-        object-fit: cover;
+      height: 300px;
     }
+  }
+
+  @media (max-width: 480px) {
+    .carousel-image {
+      height: 180px;
+    }
+  }
   </style>
 </head>
 
@@ -65,11 +80,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#times">Sailing&nbsp;Times&nbsp;&amp;&nbsp;Prices</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#info">Information</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#book">Book</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#home" onclick="closeNav();">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#times" onclick="closeNav();">Sailing&nbsp;Times&nbsp;&amp;&nbsp;Prices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery" onclick="closeNav();">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#info" onclick="closeNav();">Information</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#book" onclick="closeNav();">Book</a></li>
                 </ul>
             </div>
         </div>
@@ -198,6 +213,16 @@
     }
     window.addEventListener('scroll', updateNavbar);
     window.addEventListener('DOMContentLoaded', updateNavbar);
+
+     // Collapse navbar on mobile after click
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          new bootstrap.Collapse(navbarCollapse).hide();
+        }
+      });
+    });
 
     // Formspree async handling
     const form = document.getElementById('bookingForm');
