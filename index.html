@@ -170,12 +170,49 @@
             </p>
             <p>
                 With Killybegs Boat Tours, their signature Killybegs Harbour Tour is a 1.5 hours cruise that provides a behind the scenes look at this historic and industrious fishing port. As you glide through the sheltered waters of the harbour, you will see towering commercial trawlers, traditional wooden boats and modern vessels being serviced in the town’s renowned dry docks.
-
                 We also offer full day fishing trips and sunset cruises. Call us for more info!
             </p>
             <p>
                 Led by experienced local guides, the tour is rich with stories and insights into the maritime heritage of Killybegs. Learn how the port evolved from a modest fishing village into a key economic driver for County Donegal, exporting seafood worldwide and supporting a vibrant marine community. You will pass shipyards, fish processing facilities and may even catch a glimpse of boats unloading their catch.
             </p>
+            <div id="status">Loading tours…</div>
+<ul id="tours"></ul>
+
+<script>
+  async function loadTours() {
+    const status = document.getElementById("status");
+
+    try {
+      const res = await fetch(
+        "https://killybegs-boat-tours.shaneorourke974.workers.dev/api/tours"
+      );
+
+      if (!res.ok) throw new Error("Failed to load");
+
+      const tours = await res.json();
+
+      if (tours.length === 0) {
+        status.textContent = "No tours available.";
+        return;
+      }
+
+      status.remove();
+
+      const list = document.getElementById("tours");
+
+      tours.forEach(tour => {
+        const li = document.createElement("li");
+        li.textContent = `${tour.name} – €${(tour.price_cents / 100).toFixed(2)}`;
+        list.appendChild(li);
+      });
+    } catch (err) {
+      status.textContent = "Failed to load tours.";
+      console.error(err);
+    }
+  }
+
+  loadTours();
+</script>
             <p>
                 <strong>Location:</strong> Killybegs Slipway, County Donegal<br>
                 <strong>Maps:</strong><a href="https://www.google.com/maps/place/Killybegs+Boat+Tours/data=!4m7!3m6!1s0x485f1bafeb7f4b15:0xcb729a920d5d22f4!8m2!3d54.6358855!4d-8.4416044!16s%2Fg%2F11xtylz8rm!19sChIJFUt_668bX0gR9CJdDZKacss?authuser=0&hl=en&rclk=1" target="_blank"> Click here for map location</a><br>
